@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classifier</title>
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body onload="main()">
+    <div class="loader-view" id="loaderView">
+        <h3>Initializing ...</h3>
+    </div>
+    <div class="main" id="mainView">
+        <h1 class="heading">Image Classifier</h1>
+        <div class="select-image">
+            <input type="file" name="Image" id="selectImage" accept="jpg,jpeg,png" hidden>
+            <button class="upload-button button" id="uploadButton">Upload Image</button>
+            <button class="link-button button" id="linkButton">Paste Link</button>
+        </div>
+        <div class="image-view" id="imageViewContainer">
+            <img src="" alt="" class="image" id="imageView" crossorigin="anonymous">
+
+            <button class="button" id="classifyButton">What is in the image ?</button>
+            <h2 class="result" id="result"></h2>
+        </div>
+
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
