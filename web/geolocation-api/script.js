@@ -54,22 +54,35 @@ function liveLocation() {
 function getLocation() {
 	window.navigator.geolocation.getCurrentPosition(
 		positionCallback,
-		errorCallback
+		errorCallback,
+		{
+			enableHighAccuracy: true,
+			timeout: 10000,
+			maximumAge: 300000,
+		}
 	);
 }
 
-function checkForNull(value, unit = "") {
-	return value === null ? "NA" : value + unit;
+function getValue(value, unit = "", fix = 0) {
+	return value === null ? "NA" : value.toFixed(fix) + " " + unit;
+}
+
+function getSpeedInKm(value, unit = "", fix = 0) {
+	return value === null ? "NA" : (value * 1000).toFixed(fix) + " " + unit;
 }
 
 function positionCallback(position) {
-	longitude.innerText = position.coords.longitude;
-	latitude.innerText = position.coords.latitude;
-	accuracy.innerText = position.coords.accuracy;
-	altitude.innerText = checkForNull(position.coords.altitude, "m");
-	altitudeAccuracy.innerText = checkForNull(position.coords.altitudeAccuracy);
-	heading.innerText = checkForNull(position.coords.heading);
-	speed.innerText = checkForNull(position.coords.speed, "m/s");
+	longitude.innerText = getValue(position.coords.longitude, "°", 6);
+	latitude.innerText = getValue(position.coords.latitude, "°", 6);
+	accuracy.innerText = getValue(position.coords.accuracy, "m", 2);
+	altitude.innerText = getValue(position.coords.altitude, "m", 2);
+	altitudeAccuracy.innerText = getValue(
+		position.coords.altitudeAccuracy,
+		"m",
+		2
+	);
+	heading.innerText = getValue(position.coords.heading, "°", 2);
+	speed.innerText = getSpeedInKm(position.coords.speed, "km/s", 2);
 	time.innerText =
 		position.timestamp === null
 			? "NA"
