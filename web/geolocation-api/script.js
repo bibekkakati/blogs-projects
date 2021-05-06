@@ -42,7 +42,10 @@ function stopLiveLocation(id) {
 function liveLocation() {
 	const id = window.navigator.geolocation.watchPosition(
 		positionCallback,
-		errorCallback
+		errorCallback,
+		{
+			enableHighAccuracy: true,
+		}
 	);
 	liveLocationBtn.style.display = "none";
 	cancelLiveLocationBtn.style.display = "inline";
@@ -57,8 +60,6 @@ function getLocation() {
 		errorCallback,
 		{
 			enableHighAccuracy: true,
-			timeout: 10000,
-			maximumAge: 300000,
 		}
 	);
 }
