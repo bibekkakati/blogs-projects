@@ -6,20 +6,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Capture Screenshot</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        div {
+            text-align: center;
+            margin: 10px;
+        }
+
+        img {
+            width: 440px;
+            height: 280px;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="main" align="center">
-        <img src="./banner.png" alt="Banner" width="600" height="320">
+
+    <div id="main">
+        <img src="./banner.png" alt="Banner">
         <h3>Take Screenshot Of HTML Element Using JavaScript</h3>
     </div>
-    <div align="center">
+    <div>
         <button onclick="capture()">Capture</button>
     </div>
-    </br>
-    <div align="center">
+    <div>
         <img src="" alt="" id="result">
     </div>
+
     <script src="./html2canvas.min.js"></script>
     <script>
         function capture() {
