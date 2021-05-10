@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capture Screenshot</title>
+</head>
+
+<body>
+    <div id="main" align="center">
+        <img src="./banner.png" alt="Banner" width="600" height="320">
+        <h3>Take Screenshot Of HTML Element Using JavaScript</h3>
+    </div>
+    <div align="center">
+        <button onclick="capture()">Capture</button>
+    </div>
+    </br>
+    <div align="center">
+        <img src="" alt="" id="result">
+    </div>
+    <script src="./html2canvas.min.js"></script>
+    <script>
+        function capture() {
+            html2canvas(document.getElementById("main"), {
+                letterRendering: 1,
+                allowTaint: true,
+                useCORS: true,
+            })
+                .then(function (canvas) {
+                    document.getElementById("result").src = canvas.toDataURL("image/png", 0.5);
+                })
+                .catch((e) => {
+                    alert(e);
+                });
+        }
+    </script>
+</body>
+
+</html>
