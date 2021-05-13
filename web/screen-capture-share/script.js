@@ -21,7 +21,7 @@ function main() {
 	async function startSharing() {
 		let capture = null;
 		try {
-			capture = await window.navigator.mediaDevices.getDisplayMedia(
+			capture = await navigator.mediaDevices.getDisplayMedia(
 				displayMediaOptions
 			);
 
